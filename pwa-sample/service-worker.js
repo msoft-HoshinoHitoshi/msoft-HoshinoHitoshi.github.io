@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
               .then((cache) => {
                   console.log('Opened cache');
 
-                  // Žw’è‚³‚ê‚½ƒŠƒ\[ƒX‚ðƒLƒƒƒbƒVƒ…‚É’Ç‰Á‚·‚é
+                  // æŒ‡å®šã•ã‚ŒãŸãƒªã‚½ãƒ¼ã‚¹ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«è¿½åŠ ã™ã‚‹
                   return cache.addAll(urlsToCache);
               })
     );
@@ -28,7 +28,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    // ƒzƒƒCƒgƒŠƒXƒg‚É‚È‚¢ƒLƒƒƒbƒVƒ…(ŒÃ‚¢ƒLƒƒƒbƒVƒ…)‚Ííœ‚·‚é
+                    // ãƒ›ãƒ¯ã‚¤ãƒˆãƒªã‚¹ãƒˆã«ãªã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥(å¤ã„ã‚­ãƒ£ãƒƒã‚·ãƒ¥)ã¯å‰Šé™¤ã™ã‚‹
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
                         return caches.delete(cacheName);
                     }
@@ -46,9 +46,9 @@ self.addEventListener('fetch', (event) => {
                       return response;
                   }
 
-                  // d—vFƒŠƒNƒGƒXƒg‚ð clone ‚·‚éBƒŠƒNƒGƒXƒg‚Í Stream ‚È‚Ì‚Å
-                  // ˆê“x‚µ‚©ˆ—‚Å‚«‚È‚¢B‚±‚±‚Å‚ÍƒLƒƒƒbƒVƒ…—pAfetch —p‚Æ2‰ñ
-                  // •K—v‚È‚Ì‚ÅAƒŠƒNƒGƒXƒg‚Í clone ‚µ‚È‚¢‚Æ‚¢‚¯‚È‚¢
+                  // é‡è¦ï¼šãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ clone ã™ã‚‹ã€‚ãƒªã‚¯ã‚¨ã‚¹ãƒˆã¯ Stream ãªã®ã§
+                  // ä¸€åº¦ã—ã‹å‡¦ç†ã§ããªã„ã€‚ã“ã“ã§ã¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç”¨ã€fetch ç”¨ã¨2å›ž
+                  // å¿…è¦ãªã®ã§ã€ãƒªã‚¯ã‚¨ã‚¹ãƒˆã¯ clone ã—ãªã„ã¨ã„ã‘ãªã„
                   let fetchRequest = event.request.clone();
 
                   return fetch(fetchRequest)
@@ -57,9 +57,9 @@ self.addEventListener('fetch', (event) => {
                               return response;
                           }
 
-                          // d—vFƒŒƒXƒ|ƒ“ƒX‚ð clone ‚·‚éBƒŒƒXƒ|ƒ“ƒX‚Í Stream ‚Å
-                          // ƒuƒ‰ƒEƒU—p‚ÆƒLƒƒƒbƒVƒ…—p‚Ì2‰ñ•K—vB‚È‚Ì‚Å clone ‚µ‚Ä
-                          // 2‚Â‚Ì Stream ‚ª‚ ‚é‚æ‚¤‚É‚·‚é
+                          // é‡è¦ï¼šãƒ¬ã‚¹ãƒãƒ³ã‚¹ã‚’ clone ã™ã‚‹ã€‚ãƒ¬ã‚¹ãƒãƒ³ã‚¹ã¯ Stream ã§
+                          // ãƒ–ãƒ©ã‚¦ã‚¶ç”¨ã¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥ç”¨ã®2å›žå¿…è¦ã€‚ãªã®ã§ clone ã—ã¦
+                          // 2ã¤ã® Stream ãŒã‚ã‚‹ã‚ˆã†ã«ã™ã‚‹
                           let responseToCache = response.clone();
 
                           caches.open(CACHE_NAME)
