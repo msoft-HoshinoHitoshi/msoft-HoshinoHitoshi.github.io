@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="manifest" href="./manifest.json" />
+    <script>
+      window.addEventListener('load', function () {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register("./serviceWorker.js")
+            .then(function (registration) {
+            console.log("serviceWorker registed.");
+          }).catch(function (error) {
+            console.warn("serviceWorker error.", error);
+          });
+        }
+      });
+    </script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/android-chrome-192x192.png"/>
+    <title>pwa sample</title>
+  </head>
+  <body>
+    <h1>title page</h1>
+  </body>
+</html>
