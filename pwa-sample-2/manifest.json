@@ -1,13 +1,6 @@
 {
   "name": "pwa sample 2nd",
   "short_name": "pwa sample 2nd",
-  "icons": [
-    {
-      "src": "./images/android-chrome-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ],
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
